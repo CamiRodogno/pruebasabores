@@ -19,15 +19,23 @@
 
 /* Carga de las fuentes usando @font-face */
 @font-face {
-  font-family: "Lexend";
-  src: url('https://fonts.google.com/specimen/Lexend') format('ttf');
-  /* Agrega más formatos (woff, ttf, etc.) si lo necesitas para mayor compatibilidad */
+  font-family: 'Lexend';
+  src: url('assets/fonts/Lexend-VariableFont_wght.woff2') format('woff2'),
+      url('assets/fonts/Lexend-VariableFont_wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Platypi";
-  src: url('https://fonts.google.com/specimen/Platypi?preview.size=20&stroke=Serif&stylecount=3&query=platy') format('ttf');
-  /* Agrega más formatos (woff, ttf, etc.) si lo necesitas para mayor compatibilidad */
+  font-family: 'Platypi';
+  src: url('assets/fonts/Platypi-VariableFont-wght.woff2') format('woff2'),
+      url('assets/fonts/Platypi-VariableFont-wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Playtipi', sans-serif;
 }
 
 
