@@ -17,6 +17,20 @@
   --nav-font: "Platypi",  sans-serif;
 }
 
+/* Carga de las fuentes usando @font-face */
+@font-face {
+  font-family: "Lexend";
+  src: url('https://fonts.google.com/specimen/Lexend') format('ttf');
+  /* Agrega más formatos (woff, ttf, etc.) si lo necesitas para mayor compatibilidad */
+}
+
+@font-face {
+  font-family: "Platypi";
+  src: url('https://fonts.google.com/specimen/Platypi?preview.size=20&stroke=Serif&stylecount=3&query=platy') format('ttf');
+  /* Agrega más formatos (woff, ttf, etc.) si lo necesitas para mayor compatibilidad */
+}
+
+
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
@@ -163,7 +177,10 @@ h6 {
 /* Desktop Navigation */
 @media (min-width: 1200px) {
   .navmenu {
-    padding: 0;
+    padding: 10px 0px 20px 0px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 
   .navmenu ul {
@@ -877,10 +894,11 @@ section,
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 160px 0 100px 0;
+  padding: 100px 0px 100px 350px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .hero img {
@@ -903,8 +921,8 @@ section,
 
 .hero .container {
   position: relative;
-  margin: 0px 0px 250px 0;
-  z-index: 3;
+  margin: 0 auto 250px;
+  z-index: 1;
 }
 
 .hero h2 {
@@ -912,6 +930,9 @@ section,
   font-size: 45px;
   font-weight: 800;
   line-height: 120%;
+  text-align: center;
+  /*Sombra: offset-x | offset-y | blur-radius | color */
+  text-shadow: 3px 3px 20px black;
 }
 
 .hero p {
@@ -920,6 +941,8 @@ section,
   font-weight: 300;
   line-height: 120%;
   color: var(--heading-color);
+  text-align: center;
+  text-shadow: 3px 3px 20px black;
 }
 
 .hero .btn-get-started {
@@ -940,13 +963,17 @@ section,
   border-color: var(--accent-color);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
+  .hero {
+    padding: 100px 0px 100px 0px;
+  }
+
   .hero h2 {
-    font-size: 32px;
+    font-size: 35px;
   }
 
   .hero p {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -1016,37 +1043,60 @@ section,
 --------------------------------------------------------------*/
 #cards {
   background-color: #FFFDF7;
+  position: relative;
+  padding: 50px 0; /* Ajusta el padding superior e inferior del contenedor de las tarjetas */
+  max-width: 1500px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  z-index: 2;
 }
 
 .cards .card {
   background-color: #161616;
   color: var(--default-color);
   border: 2px solid color-mix(in srgb, #C5A183, transparent 50%);
-  padding: 60px;
-  margin: -1px;
-  border-radius: 0;
+  padding: 20px; /* Ajusta el padding interior de cada tarjeta */
+  margin-bottom: 20px; /* Ajusta el margen inferior entre tarjetas */
+  border-radius: 0px; /* Ajusta el radio de borde para redondear las esquinas */
+  flex: 1 0 calc(33.33% - 40px); /* Ajusta el tamaño inicial de las tarjetas (flex-grow, flex-shrink, flex-basis) */
+  min-height: 250px; /* Ajusta la altura mínima de las tarjetas */
+  max-height: 400px;
+  position: relative;
+  z-index: 1; /* Asegura que las tarjetas estén sobre el fondo */
+  display: flex; /* Permite que los contenidos internos se ajusten verticalmente */
+  flex-direction: column; /* Ajusta la dirección de flexión */
+  justify-content: space-between; /* Espacio entre los contenidos internos */
 }
 
 .cards .card span {
   display: block;
-  font-size: 24px;
+  font-size: 20px; /* Tamaño de fuente del span */
   font-weight: 400;
-  color:#ffffff;
+  color: #FFFDF7;
+}
+
+.card img.regional {
+  position: relative;
+  padding: 0px 40px;
+  margin: 0;
+  max-width: 150%;
+  min-width: 100%;
+  justify-content: center;
 }
 
 .cards .card h4 {
   color: color-mix(in srgb, var(--heading-color), transparent 20%);
-  font-size: 24px;
+  font-size: 24px; /* Tamaño de fuente del título */
   font-weight: 600;
   padding: 0;
-  margin: 20px 0;
+  margin: 10px 0; /* Ajusta el margen superior e inferior del título */
+  text-align: center; /* Centra el texto */
 }
 
 .cards .card p {
   color: color-mix(in srgb, #FFFDF7, transparent 20%);
-  font-size: 15px;
-  margin: 0;
-  padding: 0;
+  font-size: 16px; /* Tamaño de fuente del párrafo */
+  margin: 0 40 auto; /* Centra el párrafo horizontalmente */
+  padding: 0 60px; /* Ajusta el padding izquierdo y derecho del párrafo */
   text-align: center; 
 }
 
@@ -1095,6 +1145,43 @@ section,
   background-color: #FFFDF7;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente dentro del contenedor */
+  margin-top: 20px; /* Margen superior para separarlo del contenido superior */
+}
+
+.services .catalogo {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 10px 15px; /* Ajusta el padding superior e inferior y el padding izquierdo y derecho */
+  width: auto; /* Ajusta el ancho automáticamente al contenido */
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Quita el subrayado predeterminado de los enlaces */
+}
+
+.services .catalogo i {
+  font-size: 18px;
+  margin-left: 5px;
+  line-height: 0;
+  transition: 0.3s;
+}
+
+.services .catalogo:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  padding-right: 20px; /* Ajusta el padding derecho cuando está en estado hover */
+}
+
+.services .catalogo:hover i {
+  margin-left: 8px; /* Ajusta el margen izquierdo del icono cuando está en estado hover */
+}
 .services .service-item {
   text-align: center;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
@@ -1166,6 +1253,49 @@ section,
 .services .service-item:hover h3,
 .services .service-item:hover p {
   color: var(--contrast-color);
+}
+
+.service-item {
+  background-color: #f5f5f5; /* Color de fondo del contenedor */
+  padding: 10px; /* Espacio interior del contenedor */
+  border-radius: 0px; /* Bordes redondeados para el contenedor */
+  text-align: center; /* Centra el contenido horizontalmente */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para resaltar el contenedor */
+  max-width: 400px; /* Ancho máximo del contenedor */
+  min-height: 120px;
+  max-height: 400px;
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  height: auto; /* Altura automática basada en el contenido */
+  display: flex; /* Utiliza flexbox para alinear verticalmente el contenido */
+  flex-direction: column; /* Alinea el contenido en columna */
+  justify-content: center; /* Centra verticalmente el contenido */
+}
+
+.service-item a.stretched-link {
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  color: inherit; /* Hereda el color de texto del contenedor */
+  margin-top: auto; /* Empuja el enlace hacia la parte inferior */
+}
+
+.service-item img {
+  max-width: 80%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+  max-height: 80%;
+  height: auto; /* Ajusta automáticamente la altura según el ancho */
+  border-radius: 0px; /* Bordes redondeados para la imagen */
+  margin-bottom: 10px; /* Espacio inferior entre la imagen y el título */
+  object-fit: cover; /* Ajusta el tamaño de la imagen para cubrir el contenedor */
+}
+
+.service-item h3 {
+  font-size: 20px; /* Tamaño de fuente para el título */
+  margin-bottom: 0px; /* Espacio inferior del título */
+}
+
+.service-item p {
+  font-size: 16px; /* Tamaño de fuente para el párrafo */
+  color: #777; /* Color del texto */
+  line-height: 1.4; /* Altura de línea del párrafo */
+  margin-bottom: 0; /* Elimina el espacio inferior del párrafo */
 }
 
 /*--------------------------------------------------------------
