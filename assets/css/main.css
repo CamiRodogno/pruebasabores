@@ -1052,10 +1052,11 @@ section,
 #cards {
   background-color: #FFFDF7;
   position: relative;
-  padding: 50px 0; /* Ajusta el padding superior e inferior del contenedor de las tarjetas */
+  padding: 0; /* Ajusta el padding superior e inferior del contenedor de las tarjetas */
   max-width: 1500px; /* Ancho máximo del contenedor */
-  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  margin-top: -10%; /* Centra el contenedor horizontalmente */
   z-index: 2;
+  background: none;
 }
 
 .cards .card {
