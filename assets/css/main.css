@@ -92,6 +92,157 @@ h6 {
   font-family: var(--heading-font);
 }
 
+
+
+
+/*--------------------------------------------------------------
+# Seccion "CONOCE NUESTROS PRODUCTOS"
+#
+# En esta parte usé position:relative en el contenido, y desues
+# poner position:absolute en la imagen y en la linea vertical
+# para que las mismas no interfieran en la alineacion del resto
+# de los elementos.
+--------------------------------------------------------------*/
+.productos-contenedor {
+  display: flex;
+  gap: 6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.producto-tarjeta {
+  /* Usamos position:relative
+  Ese valor hace que funcione de forma normal (no cambia nada)
+  pero es necesario para que los elementos que esten adentro 
+  puedan usar absolute y quedarse dentro de este contenido.
+  Si no usamos el relative, esos elementos van a moverse al
+  contenido de la pagina, no al de la etiqueta padre. */
+  display: flex;
+  position: relative;
+  margin-right: 3rem; /* Espacio horizontal entre productos */
+}
+.producto-tarjeta .producto-imagen {
+  /* Aca usamos absolute para que no interfiera en el alineado
+  y luego ajustamos la posicion con el margin-top. La posicion
+  izquierda no hace falta ya que va pegada al margen
+  (quedaria en 0 que es el que se usa por defecto) */
+  height: 130px;
+  top: 1rem;
+  position: absolute;
+  margin-left: -10%;
+  margin-top: -5%;
+}
+.producto-tarjeta .linea-vertical {
+  /* El position:absolute lo que hace es romper la alineacion
+  del elemento (como que quedarian flotando sin utilizar margenes)
+  Por defecto van arriba a la derecha (top:0 y left:0)
+  Luego ajustamos la posicion con esos valores */
+  position: absolute;
+  height: 120%;
+  width: 1px;
+  background-color: #C5A183;
+  left: 10rem;
+}
+
+.producto-contenido {
+  /* Una vez que ajustamos con absolute la imagen y la linea,
+  solamente debemos darle margen al contenido para tener lugar
+  en blanco del lado izquierdo (ya que como comente anteriormente,
+  esos elementos no utilizan espacio al estar en absolute) */
+  position: relative; 
+  margin-left: 110px;
+  min-width: 260px;
+}
+.producto-contenido .producto-titulo {
+  text-align: center;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: .5rem 2rem .5rem 3.75rem;
+  margin: 0;
+}
+.producto-contenido .linea-horizontal {
+  width: 100%;
+  height: 1px;
+  background-color: #C5A183;
+}
+.producto-contenido .producto-descripcion {
+  text-align: center;
+  padding: .75rem 2rem .75rem 3.75rem;
+  height: 4rem;
+  margin: 0;
+}
+
+.producto-contenido .producto-descripcion {
+  text-align: center;
+  padding: .75rem 2rem .75rem 3.75rem;
+  height: 4rem;
+  margin: 0;
+}
+
+
+/*--------------------------------------------------------------
+# Seccion "PERFECCIONA TUS PLATOS"
+#
+# En esta parte solamente vamos a ajustar las alineaciones
+# para ver la imagen y el titulo en una columna, y el precio
+# y duracion comparten el ancho.
+--------------------------------------------------------------*/
+.cursos-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.curso-contenedor {
+  background: #f1dfd0;
+  padding: .5rem;
+  margin: .25rem;
+  width: fit-content;
+}
+.curso-borde {
+  border: 1px solid black;
+}
+.curso-contenedor .curso-imagen {
+  width: 250px;
+}
+.curso-contenedor .curso-imagen img {
+  /* A la imagen le pones alto y ancho fijo, y luego
+  ajustamos el contenido. Con esto evitamos que si alguna imagen
+  se vea distinti si tiene distinto tamaño */
+  height: 340px;
+  width: 250px;
+  object-fit: cover;
+}
+.curso-contenedor .curso-titulo {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 800;
+  padding: .5rem 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.curso-contenedor .curso-detalles {
+  display: flex;
+  text-align: center;
+  width: 100%;
+}
+.curso-detalles .curso-duracion {
+  padding: .5rem 0;
+  width: 50%;
+  border-right: 1px solid black;
+  margin: 0;
+}
+.curso-detalles .curso-precio {
+  padding: .5rem 0;
+  width: 50%;
+  margin: 0;
+}
+
+
+
+
+
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -902,7 +1053,6 @@ section,
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 100px 0px 100px 350px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -929,16 +1079,16 @@ section,
 
 .hero .container {
   position: relative;
-  margin: 0 auto 250px;
+  margin: 0px 0px 0px 0px;
   z-index: 1;
 }
 
 .hero h2 {
-  margin: 0px 0px 0px 0px;
+  margin: -150px 0px 0px 0px;
   font-size: 45px;
   font-weight: 800;
   line-height: 120%;
-  text-align: center;
+  text-align: left;
   /*Sombra: offset-x | offset-y | blur-radius | color */
   text-shadow: 3px 3px 20px black;
 }
@@ -949,7 +1099,7 @@ section,
   font-weight: 300;
   line-height: 120%;
   color: var(--heading-color);
-  text-align: center;
+  text-align: left;
   text-shadow: 3px 3px 20px black;
 }
 
@@ -962,12 +1112,14 @@ section,
   margin: 30px 0 0 0;
   transition: 0.5s;
   text-transform: uppercase;
-  border: 2px solid color-mix(in srgb, var(--default-color), transparent 20%);
+  border-radius: 20px; /* Ajusta este valor para cambiar el redondeo */
+  background-color: #C5A183; /* Cambia por el color de fondo deseado */
+  border: hidden 2px solid color-mix(in srgb, var(--default-color), transparent 20%);
 }
 
 .hero .btn-get-started:hover {
-  color: var(--contrast-color);
-  background: var(--accent-color);
+  color:#f5f5f5;
+  background:#000000;
   border-color: var(--accent-color);
 }
 
@@ -989,12 +1141,15 @@ section,
 # About Section
 --------------------------------------------------------------*/
 #about {
-  background-color: #FFFDF7;
+  background:none;
+  margin-top: 0%;
 }
 
 .about .content h3 {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 900;
+  margin-top: 5%;
+  line-height: 115%;
 }
 
 .about .content ul {
@@ -1012,8 +1167,19 @@ section,
   color: var(--accent-color);
 }
 
+.about img {
+  width: 150%; /* Ajusta el ancho de la imagen al 100% del contenedor padre */
+  height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+  max-width: 200%; /* Ancho máximo igual al del contenedor padre */
+  display: block; /* Muestra la imagen como bloque para evitar problemas de alineación */
+  margin-bottom: 20px; /* Ejemplo de margen inferior adicional */
+  margin-top: -100px;
+  margin-left: -200px;
+}
+
 .about .content p:last-child {
   margin-bottom: 0;
+  line-height: 120%;
 }
 
 .about .content .read-more {
@@ -1028,6 +1194,8 @@ section,
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5%;
+  border-radius: 40px;
 }
 
 .about .content .read-more i {
@@ -1046,6 +1214,8 @@ section,
   margin-left: 10px;
 }
 
+
+
 /*--------------------------------------------------------------
 # Cards Section
 --------------------------------------------------------------*/
@@ -1056,7 +1226,8 @@ section,
   max-width: 1500px; /* Ancho máximo del contenedor */
   margin-top: -10%; /* Centra el contenedor horizontalmente */
   z-index: 2;
-  background: none;
+  background: local;
+  display: flex;
 }
 
 .cards .card {
@@ -1109,6 +1280,94 @@ section,
   text-align: center; 
 }
 
+/* Media queries para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .cards {
+    flex-direction: column; /* Cambia la dirección de flexión a columna para móvil */
+    margin-top: 0; /* Ajusta el margen según sea necesario */
+    padding: 10px; /* Ajusta el padding del contenedor principal */
+  }
+
+  .cards .card {
+    flex: 1 0 100%; /* Ocupa todo el ancho disponible */
+    margin-bottom: 10px; /* Reducir margen inferior entre tarjetas */
+  }
+
+  .cards .card h4 {
+    font-size: 20px; /* Tamaño de fuente más pequeño para móvil */
+  }
+
+  .cards .card p {
+    font-size: 14px; /* Tamaño de fuente más pequeño para párrafos en móvil */
+    padding: 0 20px; /* Ajusta el padding izquierdo y derecho del párrafo para móvil */
+  }
+}
+
+/*--------------------------------------------------------------
+# Grilla principal
+--------------------------------------------------------------*/
+#grid {
+  background: none;
+  position: relative;
+  padding: 0; /* Ajusta el padding superior e inferior del contenedor de las tarjetas */
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin-top: 6%; /* Centra el contenedor horizontalmente */
+  z-index: 2;
+  display: flex;
+}
+
+.grid-container {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: -2px; /* Espacio entre las celdas */
+  max-width: 1200px;
+  width: 900px;
+  height: 400px;
+  margin: 20px auto;
+  margin-left: 190px;
+  padding: 20px;
+  background: none;
+}
+
+.grid-item {
+  background-color: #161616;
+  padding: 20px; /* Ajusta el padding interior de cada celda */
+  border: 1px solid #C5A183;
+  text-align: center;
+  display: flex; /* Usamos flexbox para centrar verticalmente el contenido */
+  flex-direction: column; /* Alinea el contenido en columna */
+  justify-content: center; /* Centra el contenido verticalmente */
+  width: 300px; /* Ancho de cada columna */
+  height: 300px; /* Alto de cada columna */
+}
+
+.grid-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: -15px; /* Espacio entre la imagen y el texto */
+  margin-top: -35px;
+}
+
+.grid-container .linea-horizontal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(60% - 1px); /* Posiciona la línea en el centro vertical */
+  left: calc(2%);
+  width: 100%; /* Ancho de la línea */
+  height: 1px;
+  background-color: #C5A183;
+}
+
+.grid-item p {
+  font-size: 16px;
+  color: #FFFDF7; /* Color de texto */
+  text-align: center; /* Alineación centrada */
+  margin: 10px 0 0; /* Espacio alrededor del texto (top, right, bottom, left) */
+}
+
 
 
 /*--------------------------------------------------------------
@@ -1120,6 +1379,7 @@ section,
 
 .section-title {
   color: #ffffff; /* Cambia este valor al color que desees */
+  margin-bottom: -1%;
 }
 
 .clients {
@@ -1151,7 +1411,7 @@ section,
 # Services Section
 --------------------------------------------------------------*/
 #services {
-  background-color: #FFFDF7;
+  background: none;
 }
 
 .button-container {
@@ -1233,6 +1493,7 @@ section,
 .services .service-item h3 {
   font-weight: 700;
   margin: 10px 0 15px 0;
+  margin bottom: 50%;
   font-size: 22px;
 }
 
@@ -1306,6 +1567,29 @@ section,
   line-height: 1.4; /* Altura de línea del párrafo */
   margin-bottom: 0; /* Elimina el espacio inferior del párrafo */
 }
+
+/* Estilos para el botón Comprar todos */
+.services .btn-comprar-todos {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #C5A183;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-family: var(--nav-font);
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.services .btn-comprar-todos:hover {
+  background-color: #ae4040;
+}
+
+.button-container {
+  text-align: center; /* Centra el botón horizontalmente */
+  margin-top: 20px; /* Margen superior para separarlo del contenido superior */
+}
+
 
 /*--------------------------------------------------------------
 # Call To Action Section
