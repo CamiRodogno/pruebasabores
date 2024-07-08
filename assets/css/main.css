@@ -1568,28 +1568,6 @@ section,
   margin-bottom: 0; /* Elimina el espacio inferior del párrafo */
 }
 
-/* Estilos para el botón Comprar todos */
-.services .btn-comprar-todos {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #C5A183;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 30px;
-  font-family: var(--nav-font);
-  font-size: 18px;
-  transition: background-color 0.3s ease;
-}
-
-.services .btn-comprar-todos:hover {
-  background-color: #ae4040;
-}
-
-.button-container {
-  text-align: center; /* Centra el botón horizontalmente */
-  margin-top: 20px; /* Margen superior para separarlo del contenido superior */
-}
-
 
 /*--------------------------------------------------------------
 # Call To Action Section
