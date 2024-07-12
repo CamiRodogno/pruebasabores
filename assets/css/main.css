@@ -111,73 +111,50 @@ h6 {
 }
 
 .producto-tarjeta {
-  /* Usamos position:relative
-  Ese valor hace que funcione de forma normal (no cambia nada)
-  pero es necesario para que los elementos que esten adentro 
-  puedan usar absolute y quedarse dentro de este contenido.
-  Si no usamos el relative, esos elementos van a moverse al
-  contenido de la pagina, no al de la etiqueta padre. */
+  background: #f1dfd0;
+  height: 140px;
+  width: 380px;
+}
+.producto-tarjeta .producto-borde {
+  margin: .5rem;
+  border: 1px solid black;
   display: flex;
-  position: relative;
-  margin-right: 3rem; /* Espacio horizontal entre productos */
+  height: calc(100% - 1rem);
 }
-.producto-tarjeta .producto-imagen {
-  /* Aca usamos absolute para que no interfiera en el alineado
-  y luego ajustamos la posicion con el margin-top. La posicion
-  izquierda no hace falta ya que va pegada al margen
-  (quedaria en 0 que es el que se usa por defecto) */
-  height: 130px;
-  top: 1rem;
-  position: absolute;
-  margin-left: -10%;
-  margin-top: -5%;
+.producto-tarjeta .producto-imagen  {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 240px;
+  overflow: hidden;
 }
-.producto-tarjeta .linea-vertical {
-  /* El position:absolute lo que hace es romper la alineacion
-  del elemento (como que quedarian flotando sin utilizar margenes)
-  Por defecto van arriba a la derecha (top:0 y left:0)
-  Luego ajustamos la posicion con esos valores */
-  position: absolute;
-  height: 120%;
-  width: 1px;
-  background-color: #C5A183;
-  left: 10rem;
+.producto-tarjeta .producto-imagen  img {
+  width: 100%;
 }
-
 .producto-contenido {
-  /* Una vez que ajustamos con absolute la imagen y la linea,
-  solamente debemos darle margen al contenido para tener lugar
-  en blanco del lado izquierdo (ya que como comente anteriormente,
-  esos elementos no utilizan espacio al estar en absolute) */
-  position: relative; 
-  margin-left: 110px;
-  min-width: 260px;
+  width: 100%;
+  border-left: 1px solid black;
 }
 .producto-contenido .producto-titulo {
   text-align: center;
-  color: #000000;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  padding: .5rem 2rem .5rem 3.75rem;
-  margin: 0;
-}
-.producto-contenido .linea-horizontal {
-  width: 100%;
-  height: 1px;
-  background-color: #C5A183;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  height: 50%;
 }
 .producto-contenido .producto-descripcion {
   text-align: center;
-  padding: .75rem 2rem .75rem 3.75rem;
-  height: 4rem;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
 }
-
-.producto-contenido .producto-descripcion {
-  text-align: center;
-  padding: .75rem 2rem .75rem 3.75rem;
-  height: 4rem;
-  margin: 0;
+.producto-contenido .producto-descripcion p {
+  display: block;
 }
 
 
@@ -190,54 +167,133 @@ h6 {
 --------------------------------------------------------------*/
 .cursos-container {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 .curso-contenedor {
   background: #f1dfd0;
-  padding: .5rem;
-  margin: .25rem;
+  padding: .7rem;
+  margin: .5rem .5rem 0;
   width: fit-content;
+  height: auto;
+  transition: .5s ease;
 }
+
+.curso-contenedor:hover {
+  /* Aca cambiamos el zoom cuando se pasa el mouse (hover) */
+  transform: scale(1.025);
+}
+
 .curso-borde {
   border: 1px solid black;
+  position: relative;
 }
 .curso-contenedor .curso-imagen {
-  width: 250px;
+  width: 300px;
+  height: auto;
 }
 .curso-contenedor .curso-imagen img {
   /* A la imagen le pones alto y ancho fijo, y luego
   ajustamos el contenido. Con esto evitamos que si alguna imagen
   se vea distinti si tiene distinto tamaño */
   height: 340px;
-  width: 250px;
+  width: 300px;
   object-fit: cover;
 }
+
+.curso-sello {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  background:none; /* aca esta el color de fondo del sello */
+  border-radius: 50%;
+}
+
+.curso-sello img {
+  height: 100px;
+}
+
 .curso-contenedor .curso-titulo {
   text-align: center;
+  font-family: var(--nav-font);
   font-size: 1.15rem;
   font-weight: 800;
   padding: .5rem 0;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
+.cursos-container .curso-contenedor .curso-info {
+  text-align: center;
+  width: 100%;
+  padding: .5rem 0;
+  border-bottom: 1px solid black;
+}
+
 .curso-contenedor .curso-detalles {
   display: flex;
   text-align: center;
   width: 100%;
 }
+
 .curso-detalles .curso-duracion {
   padding: .5rem 0;
   width: 50%;
   border-right: 1px solid black;
   margin: 0;
 }
+
 .curso-detalles .curso-precio {
   padding: .5rem 0;
   width: 50%;
   margin: 0;
 }
+
+.curso-contenedor .curso-botonera {
+  text-align: center;
+}
+
+.curso-botonera .curso-boton {
+  margin: .5rem;
+  background: black;
+  color: white;
+  font-size: .75rem;
+  border-radius: 1rem;
+  border: none;
+  padding: .25rem 1rem;
+}
+
+.curso-premium {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  background: black;
+  border-radius: 50%;
+}
+.curso-premium img {
+  height: 100px;
+}
+
+/* 
+  EL elemento pricing toma los estilos del section,
+  que ya tiene estilos definidos mas abajo (como el fondo por ejemplo)
+  Aca solamente seteamos que se vea superpuesto y ponemos fondo transparente
+*/
+.pricing {
+  top: -160px;
+  position: relative;
+  background: transparent !important;
+}
+
+.pricing-fondo {
+  background-color: #FFF9EF;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
 
 
 
@@ -1063,7 +1119,7 @@ section,
   position: absolute;
   inset: 0;
   display: block;
-  width: 120%;
+  width: 110%;
   height: 100%;
   object-fit: cover;
   z-index: 1;
@@ -1084,9 +1140,9 @@ section,
 }
 
 .hero h2 {
-  margin: -150px 0px 0px 0px;
-  font-size: 45px;
-  font-weight: 800;
+  margin: -50px 0px 0px 0px;
+  font-size: 55px;
+  font-weight: 750;
   line-height: 120%;
   text-align: left;
   /*Sombra: offset-x | offset-y | blur-radius | color */
@@ -1094,10 +1150,10 @@ section,
 }
 
 .hero p {
-  margin: 20px 0px 0px 0px;
-  font-size: 18px;
+  margin: 15px 0px 0px 0px;
+  font-size: 20px;
   font-weight: 300;
-  line-height: 120%;
+  line-height: 130%;
   color: var(--heading-color);
   text-align: left;
   text-shadow: 3px 3px 20px black;
@@ -1109,16 +1165,16 @@ section,
   font-size: 15px;
   display: inline-block;
   padding: 8px 30px;
-  margin: 30px 0 0 0;
+  margin: 60px 0 0 0;
   transition: 0.5s;
   text-transform: uppercase;
   border-radius: 20px; /* Ajusta este valor para cambiar el redondeo */
-  background-color: #C5A183; /* Cambia por el color de fondo deseado */
-  border: hidden 2px solid color-mix(in srgb, var(--default-color), transparent 20%);
+  background:none; /* Cambia por el color de fondo deseado */
+  border: 2px solid color-mix(in srgb, var(--default-color), transparent 20%);
 }
 
 .hero .btn-get-started:hover {
-  color:#f5f5f5;
+  color:#000000;
   background:#000000;
   border-color: var(--accent-color);
 }
@@ -1126,14 +1182,49 @@ section,
 @media (max-width: 800px) {
   .hero {
     padding: 100px 0px 100px 0px;
+    margin-top: 0%;
+  }
+
+  .hero .container {
+    position: relative;
+    margin-top: 0%;
+    margin-left: 0%;
   }
 
   .hero h2 {
     font-size: 35px;
+    margin-bottom: 80px;
+    margin-left: 0%;
+    text-align: center;
   }
 
   .hero p {
-    font-size: 16px;
+    font-size: 14px;
+    margin-top: -20%;
+    text-align: center;
+  }
+
+  .hero img {
+    position: absolute;
+    inset: 0;
+    width: 120%;
+    height: 100%;
+  }
+
+  .hero .btn-get-started {
+    position: relative;
+    color: var(--default-color);
+    font-weight: 400;
+    font-size: 12px;
+    display: inline-block;
+    padding: 8px 25px;
+    align-items: center;
+    margin: 180px 0px 0px 100px;
+    transition: 0.5s;
+    text-transform: uppercase;
+    border-radius: 20px; /* Ajusta este valor para cambiar el redondeo */
+    background:none; /* Cambia por el color de fondo deseado */
+    border: 2px solid color-mix(in srgb, var(--default-color), transparent 20%);
   }
 }
 
@@ -1143,22 +1234,35 @@ section,
 #about {
   background:none;
   margin-top: 0%;
+  background-color: #FFF9EF;
+  display: flex;
+}
+
+.about .container {
+  margin-top: 9%;
 }
 
 .about .content h3 {
   font-size: 2rem;
   font-weight: 900;
-  margin-top: 5%;
+  margin-top: 6%;
+  margin-left: 15%;
+  line-height: 115%;
+}
+
+.about .content p {
+  margin-left: 15%;
   line-height: 115%;
 }
 
 .about .content ul {
   list-style: none;
-  padding: 0;
 }
 
 .about .content ul li {
-  padding-bottom: 10px;
+  padding-bottom: 3px;
+  margin-left: 10%;
+  margin-top: 2%;
 }
 
 .about .content ul i {
@@ -1168,13 +1272,13 @@ section,
 }
 
 .about img {
-  width: 150%; /* Ajusta el ancho de la imagen al 100% del contenedor padre */
+  width: 110%; /* Ajusta el ancho de la imagen al 100% del contenedor padre */
   height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
   max-width: 200%; /* Ancho máximo igual al del contenedor padre */
   display: block; /* Muestra la imagen como bloque para evitar problemas de alineación */
   margin-bottom: 20px; /* Ejemplo de margen inferior adicional */
-  margin-top: -100px;
-  margin-left: -200px;
+  margin-top: -120px;
+  margin-left: -15%;
 }
 
 .about .content p:last-child {
@@ -1185,7 +1289,7 @@ section,
 .about .content .read-more {
   background: var(--accent-color);
   color: var(--contrast-color);
-  font-family: var(--heading-font);
+  font-family: var(--default-font);
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
@@ -1194,13 +1298,14 @@ section,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 8%;
+  margin-left: 14%;
   border-radius: 40px;
 }
 
 .about .content .read-more i {
   font-size: 18px;
-  margin-left: 5px;
+  margin-left: 10px;
   line-height: 0;
   transition: 0.3s;
 }
@@ -1214,7 +1319,65 @@ section,
   margin-left: 10px;
 }
 
+@media (max-width: 800px) {
+  .about {
+    padding: 100px 0px 90px 0px;
+    margin-top: 0%;
+    margin-left: 0%;
+  }
 
+  .about .container {
+    position: relative;
+    margin-top:15%;
+    margin-left: 0%;
+  }
+
+  .about .content h3 {
+    font-size: 30px;
+    margin-bottom: 50px;
+    margin-top: 5%;
+    margin-left: 0%;
+    text-align: center;
+  }
+
+  .about .content p {
+    font-size: 13px;
+    margin-top: -5%;
+    margin-left: 30%;
+  }
+
+  .about .content ul li {
+    font-size: 14px;
+    margin-top: -5%;
+    text-align: center;
+    margin-left: -10px;
+  }
+
+  .about img {
+    position: relative;
+    inset: 0;
+    margin-left: 2%;
+    width: 100%;
+    height: auto;
+  }
+
+  .about .content .read-more {
+    background: var(--accent-color);
+    color: var(--contrast-color);
+    font-family: var(--default-font);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 12px 30px;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+    margin-left: 28%;
+    border-radius: 40px;
+  }
+}
 
 /*--------------------------------------------------------------
 # Cards Section
@@ -1411,7 +1574,7 @@ section,
 # Services Section
 --------------------------------------------------------------*/
 #services {
-  background: none;
+  background-color: #FFF9EF;
 }
 
 .button-container {
@@ -1576,7 +1739,7 @@ section,
   --background-color: #000000;
   --default-color: #ffffff;
   --contrast-color: #ffffff;
-  padding: 120px 0;
+  padding: 150px 0;
   position: relative;
   clip-path: inset(0);
 }
@@ -1606,13 +1769,19 @@ section,
 }
 
 .call-to-action h3 {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 800;
   color: var(--default-color);
+  margin-bottom: 20px;
 }
 
 .call-to-action p {
   color: var(--default-color);
+  font-size: 15px;
+  font-family: var(--default-font);
+  font-weight: 0;
+  line-height: 125%;
+  margin-bottom: 10%;
 }
 
 .call-to-action .cta-btn {
@@ -1738,6 +1907,10 @@ section,
 /*--------------------------------------------------------------
 # Pricing Section
 --------------------------------------------------------------*/
+#pricing {
+  background-color: #FFF9EF;
+}
+
 .pricing .pricing-item {
   padding: 60px 40px;
   box-shadow: 0 3px 20px -2px color-mix(in srgb, var(--default-color), transparent 90%);
@@ -1747,6 +1920,7 @@ section,
 
 .pricing h3 {
   font-weight: 600;
+  font-family: var(--nav-font);
   margin-bottom: 15px;
   font-size: 20px;
 }
@@ -1856,14 +2030,22 @@ section,
 /*--------------------------------------------------------------
 # Team Section
 --------------------------------------------------------------*/
+#team {
+  background-color: #FFF9EF;
+  position: relative;
+  top: -160px;
+}
+
+
 .team .member {
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   text-align: center;
   margin-bottom: 20px;
+  background-color: #fffbf4;
 }
 
 .team .member img {
-  border-radius: 50%;
+  border-radius: 0%;
   max-width: 60%;
   margin: 30px 0;
 }
@@ -2108,4 +2290,279 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/*--------------------------------------------------------------
+# Values Section
+--------------------------------------------------------------*/
+
+.values {
+  font-size: var(--bs-body-font-size);
+  line-height: var(--bs-body-line-height);
+  text-align: var(--bs-body-text-align);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: var(--default-font);
+  font-weight: 400;
+  color: #000000;
+  box-sizing: border-box;
+  padding: 30px 0;
+  overflow: hidden;
+  background-color: #F0E9DE;
+}
+
+.values .section-header{
+font-size: var(--bs-body-font-size);
+line-height: var(--bs-body-line-height);
+-webkit-text-size-adjust: 100%;
+-webkit-tap-highlight-color: transparent;
+font-family: var(--default-font);
+font: weight 800px;
+color: #000000;
+--bs-gutter-x: 1.5rem;
+--bs-gutter-y: 0;
+pointer-events: auto;
+box-sizing: border-box;
+text-align: center;
+padding-bottom: 20px;
+}
+
+.values .row {
+  font-size: var(--bs-body-font-size);
+  line-height: var(--bs-body-line-height);
+  text-align: var(--bs-body-text-align);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: var(--default-font);
+  font-weight: 400;
+  color: #000000;
+  pointer-events: auto;
+  box-sizing: border-box;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.values .box {
+  padding: 30px;
+  /* box-shadow: 0px 0 5px rgba(1, 41, 112, 0.08); */
+  text-align: center;
+  transition: 0.3s;
+  height: 100%;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+user agent stylesheet
+div {
+  display: block;
+  unicode-bidi: isolate;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+[data-aos] {
+  pointer-events: none;
+}
+
+.values h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: -1%;
+  line-height: 115%;
+}
+
+.values p {
+    line-height: 24px;
+    font-size: 15px;
+    margin-top: 2%;
+  }
+
+.values .box h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 15px; /* Aca esta el margen superior del titulo */
+  margin-bottom: 5px;
+  padding-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.values .box-contenedor {
+  padding: 0;
+}
+
+.values .box.box-borde {
+  border: 1px solid black;
+  padding: 0;
+}
+
+.values .box-imagen {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.values .box p {
+  font-size: 15px;
+  line-height: 120%;
+  font-weight: 200;
+  margin-top: 0px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 15px;  /* Aca el margen inferior del detalle */
+  padding: 0 1rem;
+  position: relative;
+}
+
+.values .box img {
+  height: auto;
+  width: 50%; /* Aca ajustas la imagen  */
+}
+
+@media (max-width: 800px) {
+  .values h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .values p {
+    line-height: 24px;
+    font-size: 13px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+.testimonials {
+background-color: #F0E9DE;
+}
+
+.testimonials h2 {
+  font-size: 30px;
+  font-family: var(--heading-font);
+  text-align: center;
+  margin-bottom: -50px;
+  margin-top: -50px;
+  font-weight: 800;
+  padding: 10px
+}
+
+
+.testimonials p {
+font-size: 40px; 
+text-align: center;
+font-family: var(--default-font);
+font-weight: 1000;
+padding: 10px
+}
+
+
+
+.testimonials .testimonial-item {
+background-color: var(--surface-color);
+box-shadow: 0px 0 20px rgba(0, 0, 0, 0.1);
+box-sizing: content-box;
+padding: 30px;
+margin: 40px 30px;
+min-height: 320px;
+display: flex;
+flex-direction: column;
+text-align: center;
+transition: 0.3s;
+}
+
+
+.testimonials .testimonial-item .stars {
+margin-bottom: 15px;
+}
+
+.testimonials .testimonial-item .stars i {
+color: #ffc107;
+margin: 0 1px;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+width: 90px;
+border-radius: 50%;
+border: 4px solid var(--background-color);
+margin: 0 auto;
+}
+
+.testimonials .testimonial-item h3 {
+font-size: 18px;
+font-weight: bold;
+margin: 10px 0 5px 0;
+}
+
+.testimonials .testimonial-item h4 {
+font-size: 14px;
+color: color-mix(in srgb, var(--default-color), transparent 40%);
+margin: 0;
+}
+
+.testimonials .testimonial-item p {
+font-family: "montserrat";
+font-size: 14px;
+font-weight: 400;
+font-style: italic;
+margin: 0 auto 15px auto;
+}
+
+.testimonials .swiper-wrapper {
+height: auto;
+}
+
+.testimonials .swiper-pagination {
+margin-top: 20px;
+position: relative;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+width: 12px;
+height: 12px;
+background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+opacity: 1;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+background-color: var(--accent-color);
+}
+
+.testimonials .swiper-slide {
+opacity: 0.3;
+}
+
+.estrella-img {
+width: 150px; /* Ajusta el ancho según sea necesario */
+height: auto; /* Para mantener la proporción */
+/* Otros estilos si los necesitas */
+}
+
+@media (max-width: 1199px) {
+.testimonials .swiper-slide-active {
+  opacity: 1;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 0;
+}
+
+.testimonials .testimonial-item {
+  margin: 40px 20px;
+}
+}
+
+@media (min-width: 1200px) {
+.testimonials .swiper-slide-next {
+  opacity: 1;
+  transform: scale(1.12);
+}
 }
