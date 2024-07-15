@@ -66,6 +66,10 @@ body {
 # General
 --------------------------------------------------------------*/
 body {
+  overflow-x: hidden;
+}
+
+body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
@@ -329,14 +333,10 @@ h6 {
   background-color: #FFF9EF;
   height: 100%;
   width: 100%;
+  padding-bottom: ;
   position: absolute;
   z-index: -1;
 }
-
-
-
-
-
 
 /*--------------------------------------------------------------
 # Global Header
@@ -1018,7 +1018,7 @@ h6 {
 
 .scroll-top.active {
   visibility: visible;
-  opacity: 1;
+    opacity: 1;
 }
 
 /*--------------------------------------------------------------
@@ -1710,6 +1710,22 @@ section,
   transform: translateZ(-1px);
 }
 
+.services .section-title p {
+  font-weight: 200;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 30%;
+  margin-top: -10px;
+  font-size: 16px;
+}
+
+.services .section-title h2 {
+  font-weight: 700;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 30%;
+  font-size: 30px;
+}
 
 @media (max-width: 575px) {
   .services .section-title h2 {
@@ -2174,7 +2190,7 @@ section,
 #team {
   background-color: #FFF9EF;
   position: relative;
-  top: 0px;
+  top: -180px;
   padding-bottom: 0px;
   padding-left: 50px;
 }
@@ -2236,10 +2252,12 @@ section,
   margin: 0 2px;
 }
 
-@media (min-width: 800px) {
+@media (max-width: 890px) { 
   .team {
-    margin-top: -200px;
-  }
+  padding-top: -100px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+}
 }
 
 /*--------------------------------------------------------------
@@ -3051,6 +3069,31 @@ div {
 }
 
 @media (max-width: 800px) {
+  .values .row {
+    align-content: center;
+    max-width: 1100px; /* O ajusta este valor según tus necesidades */
+    margin: auto; /* Esto centra el contenedor en la página */
+    padding-top: 50px;
+    font-size: var(--bs-body-font-size);
+    line-height: var(--bs-body-line-height);
+    text-align: var(--bs-body-text-align);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    font-family: var(--default-font);
+    padding: 20px 0px 0px 0px;  
+    font-weight: 400;
+    color: #000000;
+    pointer-events: auto;
+    box-sizing: border-box;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+  }
+
   .values h3 {
     font-size: 30px;
     margin-bottom: 10px;
